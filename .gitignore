@@ -1,0 +1,14 @@
+qa-*.png
+stitch-*.png
+stitch-*.txt
+lexa-contact-sheet.jpg
+*.log
+Thumbs.db
+.DS_Store
+
+# Arquivos de conceito/rascunho que nao entram no site publicado.
+assets/hero-kiosk.webp
+assets/kiosk-open.webp
+assets/logo-lexa.webp
+assets/product-variety.webp
+assets/stitch-concept.webp
