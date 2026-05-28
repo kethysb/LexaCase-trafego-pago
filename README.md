@@ -9,6 +9,12 @@ Landing page estatica da LexaCase para campanhas de trafego pago, com foco em co
 - `script.js`: menu mobile e animacoes de entrada.
 - `assets/`: imagens e videos otimizados usados no site.
 
+## Pixel Meta
+
+- Pixel instalado: `1290284393303620`.
+- Eventos: `PageView`, `ViewContent`, `Lead` em cliques de WhatsApp e `WhatsAppClick` com a origem do botao.
+- Os eventos levam `brand: LexaCase` para separar a leitura da Lexa dentro do Pixel da conta.
+
 ## Como abrir
 
 Abra `index.html` no navegador ou sirva a pasta com um servidor estatico.

@@ -1,6 +1,23 @@
 const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector("[data-menu-button]");
 const nav = document.querySelector("[data-nav]");
+const lexaContent = {
+  content_name: "LexaCase Americana Shopping - capinhas peliculas e acessorios",
+  content_category: "phone_accessories",
+  content_type: "product_group",
+  brand: "LexaCase",
+};
+const lexaPhone = "5519999008650";
+
+const trackMetaEvent = (eventName, parameters, custom = false) => {
+  if (typeof fbq !== "function") {
+    return;
+  }
+
+  fbq(custom ? "trackCustom" : "track", eventName, parameters);
+};
+
+trackMetaEvent("ViewContent", lexaContent);
 
 const setHeaderState = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 20);
@@ -19,6 +36,23 @@ nav?.addEventListener("click", (event) => {
     document.body.classList.remove("menu-open");
     menuButton?.setAttribute("aria-expanded", "false");
   }
+});
+
+document.querySelectorAll(`a[href^="https://wa.me/${lexaPhone}"]`).forEach((link) => {
+  link.addEventListener("click", () => {
+    const buttonSource = link.dataset.whatsappSource || "sem-origem";
+    const eventPayload = {
+      ...lexaContent,
+      destination_phone: lexaPhone,
+      button_source: buttonSource,
+    };
+
+    trackMetaEvent("Lead", {
+      ...eventPayload,
+      lead_type: "whatsapp",
+    });
+    trackMetaEvent("WhatsAppClick", eventPayload, true);
+  });
 });
 
 const reveals = document.querySelectorAll(".reveal");
