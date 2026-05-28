@@ -2,7 +2,7 @@ const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector("[data-menu-button]");
 const nav = document.querySelector("[data-nav]");
 const lexaContent = {
-  content_name: "LexaCase Americana Shopping - capinhas peliculas e acessorios",
+  content_name: "LexaCase Americana Shopping - capinhas, películas e acessórios",
   content_category: "phone_accessories",
   content_type: "product_group",
   brand: "LexaCase",
