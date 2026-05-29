@@ -12,6 +12,24 @@ const lexaContent = {
 window.__trackedMetaEvents = window.__trackedMetaEvents || [];
 
 const cleanText = (value) => (value || "").replace(/\s+/g, " ").trim().slice(0, 120);
+const gaEventNames = {
+  ViewContent: "view_content",
+  SiteClick: "site_click",
+  Lead: "generate_lead",
+  WhatsAppClick: "whatsapp_click",
+  ScrollDepth: "scroll_depth",
+  TimeOnPage: "time_on_page",
+  VideoPlay: "video_play",
+  VideoProgress: "video_progress",
+  VideoComplete: "video_complete",
+};
+
+const getGaEventName = (eventName) =>
+  gaEventNames[eventName] ||
+  eventName
+    .replace(/([a-z])([A-Z])/g, "$1_$2")
+    .replace(/\s+/g, "_")
+    .toLowerCase();
 
 const getElementLabel = (element) =>
   cleanText(
@@ -44,6 +62,10 @@ const trackMetaEvent = (eventName, parameters = {}, custom = false) => {
 
   if (typeof fbq === "function") {
     fbq(custom ? "trackCustom" : "track", eventName, payload);
+  }
+
+  if (typeof gtag === "function") {
+    gtag("event", getGaEventName(eventName), payload);
   }
 };
 
